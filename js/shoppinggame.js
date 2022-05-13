@@ -1,17 +1,35 @@
 let gameComplete = false;
 // Define the three constants here
-
+const name="unknown", score=0, items=0;
 // Define the player object here
-
+let player = {
+    name,
+    score,
+    items,
+    getCurrentScore() { return this.score },
+    addPoints (points) { this.score += points},
+    deductPoints(points) { this.score -= points}
+}
 // Define the Product class - write the Constructor function for Product class here
-
+function Product(id, name, price, expiryDate){
+    this.id = id;
+    this.name= name;
+    this.price = price;
+    this.expiryDate = expiryDate;
+    }
 // Complete the dateDiff function
-const dateDiff = (date1, date2) => {};
+const dateDiff = (date1, date2) => {
+    return date1 - date2;
+};
 
 // Here, use Object.defineProperty to create property - daysToExpire
+Object.defineProperty(Product, 'daysToExpire', function () {
+    return dateDiff(this.expiryDate, new Date());
+
+});
 
 // Add method getDetails to Product here
-
+Object.defineProperty(Product, 'getDetails',function () {return `Product Name: ${this.name} , Product Price: ${this.price}`} )
 // Define the MagicProduct class here
 
 // Establish inheritance between Product() & MagicProduct() here
